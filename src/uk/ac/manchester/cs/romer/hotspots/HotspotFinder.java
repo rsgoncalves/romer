@@ -70,7 +70,6 @@ public class HotspotFinder {
 	 * @param ont	OWLOntology
 	 * @param reasonerName	Name of reasoner to be used
 	 * @param ontPath	Ontology file path
-	 * @param operationThreshold	Maximum time (in milliseconds) to be spent looking for hot spot indicators
 	 * @param classificationThreshold	Maximum time (in milliseconds) for classification of the approximation
 	 * @param indStrategy	Hot spot search strategy
 	 */
@@ -99,12 +98,13 @@ public class HotspotFinder {
 
 	
 	/**
-	 * Find hotspots for given ontology-reasoner pair
-	 * @param reasonerName	Reasoner name
-	 * @param nrHotspots	Minimum number of hot spots to be found
-	 * @throws InterruptedException 
-	 * @throws IOException 
-	 * @throws OWLOntologyCreationException 
+	 * 
+	 * @param type
+	 * @param glassBoxReasoner
+	 * @return Set of approximations
+	 * @throws IOException
+	 * @throws InterruptedException
+	 * @throws OWLOntologyCreationException
 	 */
 	public Set<Approximation> findApproximations(HotspotCandidateType type, boolean glassBoxReasoner) 
 			throws IOException, InterruptedException, OWLOntologyCreationException {
@@ -321,7 +321,7 @@ public class HotspotFinder {
 	 * 
 	 * @param classes
 	 * @param checkedClasses
-	 * @return
+	 * @return Set of verified approximations
 	 * @throws OWLOntologyCreationException
 	 * @throws InterruptedException 
 	 * @throws IOException 

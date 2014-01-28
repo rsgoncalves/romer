@@ -67,7 +67,7 @@ public class Dispatcher {
 		System.out.println("   -r		Set the number of runs of the Performance Profiler (default: 5)");
 		System.out.println("   -l		Number of ontology partitions created in the Performance Profiler (default: 4)");
 		System.out.println("  Generic:");
-		System.out.println("   -t		Timeout for entire operation (in seconds)");
+		System.out.println("   -t		Timeout for entire operation (in milliseconds)");
 		System.out.println("   -b		Ignore Abox axioms");
 		System.out.println("   -o		Output directory for logs and/or ontology files");
 		System.out.println("   -v		Print detailed messages");
@@ -243,8 +243,10 @@ public class Dispatcher {
 			Dispatcher.executeOperation(operation, true, true, params);
 			System.out.println("finished");
 		}
-		else
-			throw new RuntimeException("Error: Minimum parameters are: -ont OntologyFilePath, -reasoner ReasonerName, " +
-					"and Operation (e.g., -sat).\n\tPlease review the usage information via the -h flag.");
+		else {
+			System.out.println("Error: Minimum parameters are: -ont OntologyFilePath, -reasoner ReasonerName, " +
+					"and Operation (e.g., -sat)\n");
+			printUsage();
+		}
 	}
 }
