@@ -1,15 +1,11 @@
-romer.jar
-
 # Test files #
 *.csv
 *.html
 todo
-*.xml
 test/*
 
 # Build #
-*.xpr
-ecco.jar
+romer.jar
 build/*
 
 # SVN #
