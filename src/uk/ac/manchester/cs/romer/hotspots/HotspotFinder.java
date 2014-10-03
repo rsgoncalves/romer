@@ -357,7 +357,7 @@ public class HotspotFinder {
 
 				Hotspot candidateHotspot = prepHotspotCandidate(c, type);
 				if(candidateHotspot.getAxioms() != null && candidateHotspot.getSize() > 0) {
-					Set<Approximation> approxs = null;// = verifyHotspot(candidateHotspot, type); // TODO
+					Set<Approximation> approxs = new HashSet<Approximation>();//verifyHotspot(candidateHotspot, type);
 					if(!approxs.isEmpty()) {
 						goodApproxs.addAll(approxs);
 						hotspotList.add(candidateHotspot);
@@ -516,9 +516,9 @@ public class HotspotFinder {
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-//	public boolean verifyHotspot(OWLClass c, HotspotCandidateType type) throws OWLOntologyCreationException, IOException, InterruptedException {
+//	public boolean verifyHotspot(Hotspot c, HotspotCandidateType type) throws OWLOntologyCreationException, IOException, InterruptedException {
 //		Hotspot candidateHotspot = prepHotspotCandidate(c, type);
-//		if(sizeThreshold == 0 || candidateHotspot.getSize() <= sizeThreshold) { 
+//		if(hotspotSizeThreshold == 0 || candidateHotspot.getSize() <= hotspotSizeThreshold) { 
 //			Set<Approximation> approx = verifyHotspot(candidateHotspot, type);
 //			if(!approx.isEmpty()) return true;
 //			else return false;
@@ -1139,7 +1139,6 @@ public class HotspotFinder {
 			if(minHotspots != 0) finder.minHotspots = minHotspots;
 			if(maxTests != 0) finder.maxTests = maxTests;
 			
-			finder.hotspotSizeThreshold = 0;
 			long start = finder.bean.getCurrentThreadCpuTime();
 			
 			Set<Approximation> approxs = finder.findApproximations(hotspotType, false);
